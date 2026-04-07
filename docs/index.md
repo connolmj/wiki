@@ -54,4 +54,7 @@ Articles are published directly from research sessions and refined over time. Us
 
 ---
 
+!!! note "Disclaimer"
+    This wiki contains personal research notes for my own reference. Nothing here constitutes investment advice. All views are my own.
+
 *Last updated: April 2026*
