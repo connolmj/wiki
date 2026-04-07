@@ -1,0 +1,74 @@
+site_name: Mike's Research Wiki
+site_url: https://wiki.mikefour.com
+site_description: Personal knowledge base — research, finance, DeFi, fitness, and more.
+site_author: Mike Connolly
+
+repo_name: connolmj/wiki
+repo_url: https://github.com/connolmj/wiki
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+
+plugins:
+  - search
+  - tags
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/connolmj
+
+nav:
+  - Home: index.md
+  - Crypto & DeFi:
+    - Overview: crypto-defi/index.md
+    - Curve Finance & veCRV: crypto-defi/curve-finance.md
+  - Finance:
+    - Overview: finance/index.md
+  - Fitness:
+    - Overview: fitness/index.md
+  - Real Estate:
+    - Overview: real-estate/index.md
+  - DIY & Tech:
+    - Overview: diy-tech/index.md
+
+copyright: Copyright &copy; 2026 Mike Connolly
