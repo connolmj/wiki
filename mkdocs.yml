@@ -20,14 +20,11 @@ theme:
       accent: indigo
       toggle:
         icon: material/brightness-7
-        name: Switch to dark mode
+        name: Switch to light mode
   font:
     text: Inter
     code: JetBrains Mono
   features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.expand
     - navigation.top
     - search.highlight
     - search.suggest
@@ -46,6 +43,9 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - attr_list
   - md_in_html
   - toc:
@@ -59,16 +59,6 @@ extra:
 
 nav:
   - Home: index.md
-  - Crypto & DeFi:
-    - Overview: crypto-defi/index.md
-    - Curve Finance & veCRV: crypto-defi/curve-finance.md
-  - Finance:
-    - Overview: finance/index.md
-  - Fitness:
-    - Overview: fitness/index.md
-  - Real Estate:
-    - Overview: real-estate/index.md
-  - DIY & Tech:
-    - Overview: diy-tech/index.md
+  - Curve Finance: crypto-defi/curve-finance.md
 
 copyright: Copyright &copy; 2026 Mike Connolly
