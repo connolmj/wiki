@@ -4,10 +4,10 @@ Personal notes and deep dives on topics I'm actively researching. Published from
 
 ---
 
-| Article | Topic | Date |
-|---|---|---|
-| [Understanding Large Language Models](tech-research/llm-explainer.md) | AI / Machine Learning | Apr 2026 |
-| [Curve Finance](crypto-defi/curve-finance.md) | DeFi / AMMs | Apr 2026 |
+| Article | Topic | Description | Date |
+|---|---|---|---|
+| [Understanding Large Language Models](tech-research/llm-explainer.md) | AI / Machine Learning | What LLMs are, how Transformers and weights work, why GPUs matter, scaling laws, open source models, and running AI locally on Apple Silicon. | Apr 2026 |
+| [Curve Finance](crypto-defi/curve-finance.md) | DeFi / AMMs | Deep dive into Curve Finance — the stablecoin-focused AMM, its StableSwap invariant, liquidity pools, CRV tokenomics, and role in DeFi. | Apr 2026 |
 
 ---
 
