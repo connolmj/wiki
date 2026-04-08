@@ -1,0 +1,1626 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal knowledge base — research, finance, DeFi, fitness, and more.">
+      
+      
+        <meta name="author" content="Mike Connolly">
+      
+      
+        <link rel="canonical" href="https://wiki.mikefour.com/tech-research/llm-explainer/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../crypto-defi/curve-finance/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Understanding LLMs - Mike's Research Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#understanding-large-language-models-llms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mike&#39;s Research Wiki" class="md-header__button md-logo" aria-label="Mike's Research Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mike's Research Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Understanding LLMs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/connolmj/wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    connolmj/wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mike&#39;s Research Wiki" class="md-nav__button md-logo" aria-label="Mike's Research Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mike's Research Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/connolmj/wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    connolmj/wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding LLMs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding LLMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is an LLM?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-networks-vs-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neural Networks vs. LLMs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-llms-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How LLMs Work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How LLMs Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why GPUs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-transformer-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Transformer Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Transformer Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem-it-solved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem It Solved
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-chatgpt-moment-rlhf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ChatGPT Moment: RLHF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-models-keep-getting-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Models Keep Getting Better
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-could-progress-plateau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Could Progress Plateau?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Where Could Progress Plateau?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reasoning-ceilings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reasoning Ceilings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-plateau-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Plateau Scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-could-break-scaling-laws-entirely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Could Break Scaling Laws Entirely?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-ai-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of AI Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Source Models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Source Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Hugging Face?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-open-source-vs-closed-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Open Source vs. Closed API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-open-source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Open Source Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-models-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Models Locally
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Models Locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apple-silicon-m1-pro-16gb-ram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apple Silicon (M1 Pro, 16GB RAM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-started-on-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started on Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Research
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crypto-defi/curve-finance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curve Finance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is an LLM?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neural-networks-vs-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Neural Networks vs. LLMs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-llms-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How LLMs Work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How LLMs Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-gpus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why GPUs?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-transformer-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Transformer Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Transformer Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem-it-solved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem It Solved
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-chatgpt-moment-rlhf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The ChatGPT Moment: RLHF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-models-keep-getting-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Models Keep Getting Better
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-could-progress-plateau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Could Progress Plateau?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Where Could Progress Plateau?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reasoning-ceilings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reasoning Ceilings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-plateau-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Plateau Scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-could-break-scaling-laws-entirely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Could Break Scaling Laws Entirely?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-ai-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of AI Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open Source Models
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Source Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is Hugging Face?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-open-source-vs-closed-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Open Source vs. Closed API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-open-source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Open Source Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-models-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Models Locally
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Models Locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apple-silicon-m1-pro-16gb-ram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apple Silicon (M1 Pro, 16GB RAM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-started-on-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started on Mac
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Research
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">ai</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">llm</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">machine-learning</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">neural-networks</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">open-source</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">transformers</span>
+      
+    
+  </nav>
+
+
+  
+  
+
+
+<h1 id="understanding-large-language-models-llms">Understanding Large Language Models (LLMs)<a class="headerlink" href="#understanding-large-language-models-llms" title="Permanent link">&para;</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Large Language Models are a class of AI system that has rapidly moved from research curiosity to mainstream tool. This article covers what they are, how they work under the hood, the key architectural innovations that made them possible, where the technology may plateau, and how to get started running open source models locally.</p>
+<hr />
+<h2 id="what-is-an-llm">What is an LLM?<a class="headerlink" href="#what-is-an-llm" title="Permanent link">&para;</a></h2>
+<p>A <strong>Large Language Model</strong> is a neural network trained to understand and generate human language. It learns statistical patterns from enormous amounts of text — essentially a large chunk of the internet, books, code, and more — and becomes very good at predicting what text should come next given some input.</p>
+<p>That sounds simple, but the emergent capabilities that arise from doing this at sufficient scale are remarkable: coherent reasoning, code generation, translation, summarization, and general-purpose question answering all emerge without being explicitly programmed.</p>
+<hr />
+<h2 id="neural-networks-vs-llms">Neural Networks vs. LLMs<a class="headerlink" href="#neural-networks-vs-llms" title="Permanent link">&para;</a></h2>
+<p>A <strong>neural network</strong> is the broad category. It is any computational system loosely inspired by the brain, made of layers of nodes (neurons) connected by weighted edges. Neural networks are used everywhere — recognizing faces in photos, detecting fraud in transactions, controlling self-driving cars, predicting protein structures.</p>
+<p>An <strong>LLM is a specific type of neural network</strong> — one built with the Transformer architecture, trained on text at massive scale. Every LLM is a neural network, but most neural networks are not LLMs.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Specialized For</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Convolutional Neural Network (CNN)</td>
+<td>Images</td>
+<td>Image classifiers, object detection</td>
+</tr>
+<tr>
+<td>Recurrent Neural Network (RNN)</td>
+<td>Sequences (older approach)</td>
+<td>Early language models</td>
+</tr>
+<tr>
+<td>Transformer</td>
+<td>Sequences with self-attention</td>
+<td>GPT-4, Claude, Gemini</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>Language (large Transformer)</td>
+<td>ChatGPT, Claude, Llama</td>
+</tr>
+<tr>
+<td>Vision Transformer</td>
+<td>Images via Transformer architecture</td>
+<td>Google ViT</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> The term "neural network" is somewhat misleading marketing from the 1980s. These systems don't work like biological neurons — they are mathematical functions trained by gradient descent. The brain analogy breaks down quickly at the implementation level.</p>
+</blockquote>
+<hr />
+<h2 id="how-llms-work">How LLMs Work<a class="headerlink" href="#how-llms-work" title="Permanent link">&para;</a></h2>
+<h3 id="weights">Weights<a class="headerlink" href="#weights" title="Permanent link">&para;</a></h3>
+<p>A neural network is a giant mathematical function. It takes in numbers (text converted to numbers) and transforms them through many layers of simple math — mostly multiplication and addition — to produce an output.</p>
+<p><strong>Weights</strong> are the numbers inside those multiplications. A simplified analogy: if you wanted to predict house prices from square footage and bedrooms, you might write:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>price = (w1 × sqft) + (w2 × bedrooms)
+</code></pre></div>
+<p><code>w1</code> and <code>w2</code> are weights. During training, you adjust them until predictions match reality. An LLM does exactly this, just with 100 billion+ weights instead of 2, and the inputs are words instead of house features.</p>
+<p>The critical insight is that <strong>you don't hand-code the weights</strong>. You start with random numbers and let the training process figure out what they should be through an algorithm called <strong>backpropagation</strong>: after a wrong prediction, the model calculates how much each weight contributed to the error and nudges every weight slightly in the direction that reduces it. Done billions of times across trillions of examples, the weights gradually encode useful representations of grammar, facts, and reasoning — entirely on their own.</p>
+<h3 id="why-gpus">Why GPUs?<a class="headerlink" href="#why-gpus" title="Permanent link">&para;</a></h3>
+<p>The core operation in a neural network is <strong>matrix multiplication</strong> — multiplying large grids of numbers together. This is computationally intensive but highly parallel: each output value can be computed independently of every other.</p>
+<ul>
+<li>A <strong>CPU</strong> has a few powerful cores optimized for sequential, complex tasks (running an OS, a web browser)</li>
+<li>A <strong>GPU</strong> was originally built for rendering video games — computing millions of pixel colors simultaneously — and has tens of thousands of small cores that can all do arithmetic at once</li>
+</ul>
+<p>Because matrix multiplication is embarrassingly parallel, GPUs are orders of magnitude faster than CPUs for this workload. Training GPT-3 required thousands of GPUs running for months — it would have been essentially impossible on CPUs.</p>
+<hr />
+<h2 id="the-transformer-architecture">The Transformer Architecture<a class="headerlink" href="#the-transformer-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="the-problem-it-solved">The Problem It Solved<a class="headerlink" href="#the-problem-it-solved" title="Permanent link">&para;</a></h3>
+<p>Before Transformers (2017), the dominant approach was <strong>Recurrent Neural Networks (RNNs)</strong>, which processed text sequentially — one word at a time, left to right — carrying a "memory" of what came before. Two major problems:</p>
+<ol>
+<li>By word 200, the memory of word 1 had largely faded (the "vanishing gradient problem")</li>
+<li>Sequential processing can't be parallelized — each step depends on the previous one</li>
+</ol>
+<h3 id="self-attention">Self-Attention<a class="headerlink" href="#self-attention" title="Permanent link">&para;</a></h3>
+<p>The Transformer scraps sequential processing entirely. It looks at the entire sequence at once using a mechanism called <strong>self-attention</strong>.</p>
+<p>For each word, the model generates three vectors:
+- <strong>Query</strong> — "What am I looking for?"
+- <strong>Key</strong> — "What do I contain?"
+- <strong>Value</strong> — "What information should I pass along?"</p>
+<p>To compute attention for a word, its Query is compared (via dot product) against every other word's Key. High similarity = high attention weight. The model then takes a weighted sum of all Value vectors, producing a new context-enriched representation of that word.</p>
+<p><strong>Example:</strong> In "The trophy didn't fit in the bag because <em>it</em> was too big" — when computing the representation of "it," the attention mechanism learns to point strongly toward "trophy," resolving the reference automatically. This happens in parallel for every word simultaneously.</p>
+<h3 id="full-architecture">Full Architecture<a class="headerlink" href="#full-architecture" title="Permanent link">&para;</a></h3>
+<p>A complete Transformer stacks many attention layers (frontier models have 100+), interleaved with <strong>feed-forward layers</strong> that let each position further process its context-enriched representation. The feed-forward layers are thought to be where much factual knowledge is stored.</p>
+<p>Since attention has no inherent sense of word order, <strong>positional encoding</strong> adds a position signal to each word so the model knows word 5 comes before word 6.</p>
+<h3 id="the-chatgpt-moment-rlhf">The ChatGPT Moment: RLHF<a class="headerlink" href="#the-chatgpt-moment-rlhf" title="Permanent link">&para;</a></h3>
+<p>Raw next-token prediction produces a model that completes text in an uncontrolled way. The breakthrough that turned LLMs into useful assistants was <strong>Reinforcement Learning from Human Feedback (RLHF)</strong>:</p>
+<ol>
+<li>Start with a pretrained base model</li>
+<li>Have human trainers write examples of ideal responses (supervised fine-tuning)</li>
+<li>Have humans compare pairs of outputs and rank which is better</li>
+<li>Train a "reward model" to predict human preferences from those rankings</li>
+<li>Use reinforcement learning to fine-tune the main model to maximize that reward</li>
+</ol>
+<p>This teaches the model to be helpful, follow instructions, and communicate naturally. OpenAI applied this to GPT-3.5 and launched ChatGPT in November 2022 — it reached 100 million users in two months, the fastest consumer product adoption in history.</p>
+<hr />
+<h2 id="how-models-keep-getting-better">How Models Keep Getting Better<a class="headerlink" href="#how-models-keep-getting-better" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Lever</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scale</strong></td>
+<td>More parameters + more data + more compute = better performance, following predictable "scaling laws"</td>
+</tr>
+<tr>
+<td><strong>Data quality</strong></td>
+<td>Curated, deduplicated, filtered datasets outperform raw internet text disproportionately</td>
+</tr>
+<tr>
+<td><strong>RLHF refinement</strong></td>
+<td>Ongoing improvements in alignment training (Constitutional AI, DPO, etc.)</td>
+</tr>
+<tr>
+<td><strong>Longer context</strong></td>
+<td>Early models saw ~4,000 tokens; frontier models now handle 1,000,000+</td>
+</tr>
+<tr>
+<td><strong>Chain-of-thought</strong></td>
+<td>Training models to reason step-by-step before answering dramatically improves complex task performance</td>
+</tr>
+<tr>
+<td><strong>Mixture of Experts (MoE)</strong></td>
+<td>Routes each token through only a subset of "expert" sub-networks — bigger model at lower compute cost</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="where-could-progress-plateau">Where Could Progress Plateau?<a class="headerlink" href="#where-could-progress-plateau" title="Permanent link">&para;</a></h2>
+<h3 id="data-limits">Data Limits<a class="headerlink" href="#data-limits" title="Permanent link">&para;</a></h3>
+<p>High-quality text on the internet is finite — estimated in the tens of trillions of tokens. Frontier models have consumed a very large fraction of it. Compounding this:</p>
+<ul>
+<li><strong>Model collapse</strong> — the web is increasingly filled with AI-generated text; training on it amplifies errors and reduces diversity, like a photocopy of a photocopy</li>
+<li><strong>Tacit knowledge gap</strong> — most human expertise (surgical intuition, engineering judgment) is never written down</li>
+<li><strong>Dataset skew</strong> — training data is heavily weighted toward English and certain domains; rare languages and specialized fields have thin coverage</li>
+</ul>
+<p><strong>Synthetic data</strong> (using existing models to generate training data for future models) is a workaround but risks model collapse if not done carefully.</p>
+<h3 id="reasoning-ceilings">Reasoning Ceilings<a class="headerlink" href="#reasoning-ceilings" title="Permanent link">&para;</a></h3>
+<p>There is a serious open question about whether next-token prediction — even at massive scale — can produce genuine systematic reasoning. Tasks requiring truly novel chains of logic (not pattern-matched from training data) remain difficult. This may require architectural changes, not just more scale.</p>
+<h3 id="other-plateau-scenarios">Other Plateau Scenarios<a class="headerlink" href="#other-plateau-scenarios" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Evaluation collapse</strong> — benchmarks keep getting saturated; it becomes hard to tell if models are genuinely improving at things that matter</li>
+<li><strong>Jagged capability frontier</strong> — models improve unevenly across skills; some capabilities may hit local ceilings while others continue improving</li>
+<li><strong>Inference economics</strong> — bigger models cost more to run; at some point economics constrain how large models can practically get</li>
+<li><strong>Alignment difficulty</strong> — as capability increases, reliably aligning models with human intent becomes harder and more consequential</li>
+</ul>
+<h3 id="what-could-break-scaling-laws-entirely">What Could Break Scaling Laws Entirely?<a class="headerlink" href="#what-could-break-scaling-laws-entirely" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The training objective (next-token prediction) may be the wrong one for general intelligence</li>
+<li>Physical compute limits — frontier training runs already cost hundreds of millions of dollars; the next generation may cost billions, running into chip manufacturing and energy constraints</li>
+<li>A paradigm shift — a new architecture could replace the Transformer the way Transformers replaced RNNs, resetting the scaling curves</li>
+</ul>
+<hr />
+<h2 id="types-of-ai-models">Types of AI Models<a class="headerlink" href="#types-of-ai-models" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Input → Output</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLM (text)</td>
+<td>Text → Text</td>
+<td>GPT-4, Claude, Llama</td>
+</tr>
+<tr>
+<td>Image generation</td>
+<td>Text → Image</td>
+<td>Stable Diffusion, DALL-E, Midjourney</td>
+</tr>
+<tr>
+<td>Image understanding</td>
+<td>Image → Text</td>
+<td>Vision Transformers</td>
+</tr>
+<tr>
+<td>Audio / speech</td>
+<td>Audio → Text or Text → Audio</td>
+<td>Whisper, ElevenLabs</td>
+</tr>
+<tr>
+<td>Music generation</td>
+<td>Text → Audio</td>
+<td>MusicGen, Suno</td>
+</tr>
+<tr>
+<td>Code models</td>
+<td>Text → Code</td>
+<td>GitHub Copilot, CodeLlama</td>
+</tr>
+<tr>
+<td>Embedding models</td>
+<td>Text → Vector</td>
+<td>Sentence-BERT, text-embedding-ada</td>
+</tr>
+<tr>
+<td>Multimodal</td>
+<td>Text + Image + Audio → Any</td>
+<td>GPT-4o, Claude, Gemini</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="open-source-models">Open Source Models<a class="headerlink" href="#open-source-models" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-hugging-face">What is Hugging Face?<a class="headerlink" href="#what-is-hugging-face" title="Permanent link">&para;</a></h3>
+<p><a href="https://huggingface.co">Hugging Face</a> is the GitHub of AI models — a platform where researchers and companies publish trained models, datasets, and demo apps. Over 500,000 models are hosted there. It also provides a Python library (<code>transformers</code>) that makes it straightforward to download and run these models in code.</p>
+<h3 id="when-to-use-open-source-vs-closed-api">When to Use Open Source vs. Closed API<a class="headerlink" href="#when-to-use-open-source-vs-closed-api" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Use Open Source When</th>
+<th>Use Closed API When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Privacy matters — data stays on your machine</td>
+<td>Maximum capability is needed</td>
+</tr>
+<tr>
+<td>Running at scale (per-token API costs add up)</td>
+<td>You want managed infrastructure</td>
+</tr>
+<tr>
+<td>You want to fine-tune on your own data</td>
+<td>You're prototyping quickly</td>
+</tr>
+<tr>
+<td>Offline operation is required</td>
+<td>The task requires nuanced judgment</td>
+</tr>
+<tr>
+<td>Transparency about training data matters</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The gap between open and closed models has narrowed significantly. The best open models are now competitive for many everyday tasks.</p>
+<h3 id="key-open-source-models">Key Open Source Models<a class="headerlink" href="#key-open-source-models" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Creator</th>
+<th>Strengths</th>
+<th>Sizes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Llama 3.x</strong></td>
+<td>Meta</td>
+<td>General purpose, widely supported</td>
+<td>1B – 405B</td>
+</tr>
+<tr>
+<td><strong>Mistral / Mixtral</strong></td>
+<td>Mistral AI</td>
+<td>Very efficient at smaller sizes, MoE variant</td>
+<td>7B – 8x22B</td>
+</tr>
+<tr>
+<td><strong>DeepSeek R1</strong></td>
+<td>DeepSeek</td>
+<td>Reasoning, matched o1 at fraction of cost</td>
+<td>Various</td>
+</tr>
+<tr>
+<td><strong>Qwen 2.5</strong></td>
+<td>Alibaba</td>
+<td>Multilingual, strong coding</td>
+<td>0.5B – 72B</td>
+</tr>
+<tr>
+<td><strong>Phi-3 / Phi-4</strong></td>
+<td>Microsoft</td>
+<td>Optimized for edge/local devices</td>
+<td>3B – 14B</td>
+</tr>
+<tr>
+<td><strong>Gemma 2</strong></td>
+<td>Google</td>
+<td>Strong small-size performance</td>
+<td>2B – 27B</td>
+</tr>
+<tr>
+<td><strong>CodeLlama</strong></td>
+<td>Meta</td>
+<td>Code generation</td>
+<td>7B – 34B</td>
+</tr>
+<tr>
+<td><strong>Stable Diffusion / FLUX</strong></td>
+<td>Stability AI / Black Forest Labs</td>
+<td>Image generation</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="running-models-locally">Running Models Locally<a class="headerlink" href="#running-models-locally" title="Permanent link">&para;</a></h2>
+<h3 id="user-interfaces">User Interfaces<a class="headerlink" href="#user-interfaces" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Type</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ollama</strong></td>
+<td>CLI + local API</td>
+<td>Easy terminal-based setup, powers other UIs</td>
+</tr>
+<tr>
+<td><strong>Open WebUI</strong></td>
+<td>Web browser UI</td>
+<td>ChatGPT-like interface connecting to Ollama</td>
+</tr>
+<tr>
+<td><strong>LM Studio</strong></td>
+<td>Desktop app</td>
+<td>Beginner-friendly, no terminal needed</td>
+</tr>
+<tr>
+<td><strong>Hugging Face Spaces</strong></td>
+<td>Browser (hosted)</td>
+<td>Trying models without installing anything</td>
+</tr>
+<tr>
+<td><strong>AUTOMATIC1111 / ComfyUI</strong></td>
+<td>Web browser UI</td>
+<td>Stable Diffusion image generation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="apple-silicon-m1-pro-16gb-ram">Apple Silicon (M1 Pro, 16GB RAM)<a class="headerlink" href="#apple-silicon-m1-pro-16gb-ram" title="Permanent link">&para;</a></h3>
+<p>Apple Silicon Macs are well-suited for local model inference due to their <strong>unified memory architecture</strong> — unlike a traditional PC where the GPU has separate VRAM (typically 8-16GB), the M1 Pro shares all 16GB between CPU and GPU, making the full amount available for model inference.</p>
+<p><strong>Quantization</strong> makes this practical: model weights are compressed from 32-bit floats down to 4-bit integers, cutting memory requirements by ~8x with modest quality loss.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Quantized Size</th>
+<th>Performance on M1 Pro 16GB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llama 3.2 3B (4-bit)</td>
+<td>~2GB</td>
+<td>Fast, good for everyday tasks</td>
+</tr>
+<tr>
+<td>Llama 3 8B (4-bit)</td>
+<td>~4.5GB</td>
+<td>Good balance of speed and quality</td>
+</tr>
+<tr>
+<td>Mistral 7B (4-bit)</td>
+<td>~4.5GB</td>
+<td>Excellent for the size</td>
+</tr>
+<tr>
+<td>Phi-3 Mini (4-bit)</td>
+<td>~2.5GB</td>
+<td>Optimized for exactly this hardware class</td>
+</tr>
+<tr>
+<td>Llama 3 13B (4-bit)</td>
+<td>~8GB</td>
+<td>Possible but slow, little RAM headroom</td>
+</tr>
+<tr>
+<td>Stable Diffusion 1.5</td>
+<td>~2GB</td>
+<td>Image generation, runs well</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getting-started-on-mac">Getting Started on Mac<a class="headerlink" href="#getting-started-on-mac" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Install Ollama (ollama.com)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>brew<span class="w"> </span>install<span class="w"> </span>ollama
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 2. Pull and run a model</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>ollama<span class="w"> </span>run<span class="w"> </span>llama3.2
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># 3. Or install LM Studio for a GUI — no terminal needed</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Download from lmstudio.ai</span>
+</code></pre></div>
+<p>For a full ChatGPT-like UI, install <strong>Open WebUI</strong> alongside Ollama — it connects automatically and gives you a polished browser-based interface, conversation history, and model switching.</p>
+<hr />
+<h2 id="related-research">Related Research<a class="headerlink" href="#related-research" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../crypto-defi/curve-finance/">Curve Finance</a></li>
+</ul>
+<hr />
+<p><em>Published: April 7, 2026</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Mike Connolly
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/connolmj" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

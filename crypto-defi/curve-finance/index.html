@@ -1,0 +1,1623 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal knowledge base — research, finance, DeFi, fitness, and more.">
+      
+      
+        <meta name="author" content="Mike Connolly">
+      
+      
+        <link rel="canonical" href="https://wiki.mikefour.com/crypto-defi/curve-finance/">
+      
+      
+        <link rel="prev" href="../../tech-research/llm-explainer/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Curve Finance - Mike's Research Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#curve-finance" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mike&#39;s Research Wiki" class="md-header__button md-logo" aria-label="Mike's Research Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mike's Research Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Curve Finance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/connolmj/wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    connolmj/wiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mike&#39;s Research Wiki" class="md-nav__button md-logo" aria-label="Mike's Research Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mike's Research Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/connolmj/wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    connolmj/wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tech-research/llm-explainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Understanding LLMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curve Finance
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curve Finance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stableswap-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The StableSwap Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expansion-beyond-stablecoins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expansion Beyond Stablecoins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-scale-as-of-march-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Scale (as of March 2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fee-distribution-vecrv-economics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fee Distribution &amp; veCRV Economics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fee Distribution &amp; veCRV Economics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-fees-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Fees Come From
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekly-distribution-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekly Distribution Cycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-defillama-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding DefiLlama Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-vecrv-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How veCRV Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crv-tokenomics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRV Tokenomics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRV Tokenomics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supply-structure-march-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supply Structure (March 2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emission-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emission Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauge-voting-the-bribe-economy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gauge Voting &amp; The Bribe Economy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosystem-the-curve-wars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosystem &amp; The Curve Wars
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ecosystem &amp; The Curve Wars">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convex-finance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convex Finance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-key-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Key Integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stablecoin-proliferation-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stablecoin Proliferation Thesis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stablecoin Proliferation Thesis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-market-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Market Today
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#institutional-entrants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Institutional Entrants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regulatory-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regulatory Landscape
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regulatory Landscape">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genius-act-signed-into-law-mid-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GENIUS Act (Signed into Law, Mid-2025)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clarity-act-pending-senate-as-of-march-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLARITY Act (Pending Senate, as of March 2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#competitive-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Competitive Landscape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#investment-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Investment Thesis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Investment Thesis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bull-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bull Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bear-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bear Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valuation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bottom-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bottom Line
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stableswap-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The StableSwap Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expansion-beyond-stablecoins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Expansion Beyond Stablecoins
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-scale-as-of-march-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Scale (as of March 2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fee-distribution-vecrv-economics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fee Distribution &amp; veCRV Economics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fee Distribution &amp; veCRV Economics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-fees-come-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Fees Come From
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekly-distribution-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekly Distribution Cycle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-defillama-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding DefiLlama Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-vecrv-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How veCRV Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crv-tokenomics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRV Tokenomics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRV Tokenomics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supply-structure-march-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supply Structure (March 2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emission-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Emission Schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauge-voting-the-bribe-economy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gauge Voting &amp; The Bribe Economy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosystem-the-curve-wars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosystem &amp; The Curve Wars
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ecosystem &amp; The Curve Wars">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convex-finance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convex Finance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-key-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other Key Integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stablecoin-proliferation-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stablecoin Proliferation Thesis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stablecoin Proliferation Thesis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-market-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Market Today
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#institutional-entrants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Institutional Entrants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regulatory-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regulatory Landscape
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regulatory Landscape">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genius-act-signed-into-law-mid-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GENIUS Act (Signed into Law, Mid-2025)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clarity-act-pending-senate-as-of-march-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLARITY Act (Pending Senate, as of March 2026)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#competitive-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Competitive Landscape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#investment-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Investment Thesis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Investment Thesis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bull-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bull Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bear-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bear Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valuation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bottom-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bottom Line
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">AMM</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">Curve</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">DeFi</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">Stablecoins</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">crvUSD</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">veCRV</span>
+      
+    
+  </nav>
+
+
+  
+  
+
+
+<h1 id="curve-finance">Curve Finance<a class="headerlink" href="#curve-finance" title="Permanent link">&para;</a></h1>
+<p><em>Deep dive: protocol mechanics, tokenomics, and investment thesis. For research purposes only — not financial advice.</em></p>
+<hr />
+<h2 id="protocol-overview">Protocol Overview<a class="headerlink" href="#protocol-overview" title="Permanent link">&para;</a></h2>
+<p>Curve Finance is a decentralized exchange (DEX) built on Ethereum, purpose-designed for efficient swaps between assets that should trade near parity — stablecoins (USDC, USDT, DAI), wrapped Bitcoin variants (WBTC, renBTC), and liquid staking tokens (stETH, cbETH). It launched in January 2020 and introduced its DAO and governance token (CRV) in August 2020.</p>
+<h3 id="the-stableswap-algorithm">The StableSwap Algorithm<a class="headerlink" href="#the-stableswap-algorithm" title="Permanent link">&para;</a></h3>
+<p>Unlike general-purpose AMMs like Uniswap that use a constant-product (x×y=k) formula, Curve uses a hybrid invariant called StableSwap. This concentrates liquidity around a 1:1 price ratio, enabling trades of $1M+ in stablecoins with slippage measured in basis points rather than percentage points. The result: Curve consistently offers the best execution for stablecoin-to-stablecoin swaps on-chain, which is why aggregators like 1inch and Paraswap route enormous volumes through it.</p>
+<p>Curve pools typically charge fees between 0.01% and 0.04% per swap — dramatically lower than the 0.30% standard on Uniswap. The low fee works because volume is high on stablecoin pairs, and concentrated liquidity means capital efficiency is much greater.</p>
+<p>The amplification coefficient <strong>A</strong> controls how flat the curve is near the peg. Higher A = lower slippage for in-range trades, but more LP exposure if the peg breaks.</p>
+<h3 id="expansion-beyond-stablecoins">Expansion Beyond Stablecoins<a class="headerlink" href="#expansion-beyond-stablecoins" title="Permanent link">&para;</a></h3>
+<p><strong>Curve V2 (CryptoSwap)</strong> extended the protocol to volatile asset pairs by adapting the bonding curve to repeg around the current market price, allowing Curve to compete on pairs like ETH/USDT and CRV/ETH.</p>
+<p>More recently, Curve has expanded into lending:</p>
+<ul>
+<li><strong>crvUSD</strong> — Curve's own stablecoin, backed by crypto collateral with a novel soft-liquidation mechanism called LLAMMA</li>
+<li><strong>LlamaLend</strong> — a lending product where borrowers pay interest that accrues to the DAO. LlamaLend V2 (expected 2026) will remove the restriction that only crvUSD can be borrowed, opening up standard pairs like ETH/USDC</li>
+</ul>
+<h3 id="protocol-scale-as-of-march-2026">Protocol Scale (as of March 2026)<a class="headerlink" href="#protocol-scale-as-of-march-2026" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TVL (Combined)</td>
+<td>~$1.9B – $2.5B</td>
+</tr>
+<tr>
+<td>2025 Trading Volume</td>
+<td>~$126B (up from $119B in 2024)</td>
+</tr>
+<tr>
+<td>2025 Total Fees (all sources)</td>
+<td>~$27M ($13.6M distributed to veCRV holders)</td>
+</tr>
+<tr>
+<td>Pools Created (2025)</td>
+<td>2,209 (up 8% YoY)</td>
+</tr>
+<tr>
+<td>Pool Interactions (2025)</td>
+<td>25.2M txns (up from 11.8M in 2024)</td>
+</tr>
+<tr>
+<td>Lending Txns (2025)</td>
+<td>421K (up from 234K in 2024)</td>
+</tr>
+<tr>
+<td>Daily Active Users (Feb 2026)</td>
+<td>~4,900 (all-time high, up from &lt;1K in 2023)</td>
+</tr>
+<tr>
+<td>Chains Deployed</td>
+<td>Ethereum + L2s (Arbitrum, Optimism, Base, etc.)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key context:</strong> TVL peaked above $24B in early 2022. The current ~$2B figure represents a &gt;90% decline from peak, driven by broad DeFi deleveraging, the Terra/Luna collapse, and the Egorov liquidation crisis in 2023. However, user counts and transaction volumes have been recovering.</p>
+<hr />
+<h2 id="fee-distribution-vecrv-economics">Fee Distribution &amp; veCRV Economics<a class="headerlink" href="#fee-distribution-vecrv-economics" title="Permanent link">&para;</a></h2>
+<h3 id="where-fees-come-from">Where Fees Come From<a class="headerlink" href="#where-fees-come-from" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>DEX Swap Fees:</strong> Each pool charges 0.01–0.04% per trade, split 50/50: half goes to liquidity providers (LPs) in that pool, half goes to the DAO (the "admin fee")</li>
+<li><strong>crvUSD Interest:</strong> Borrowers who mint crvUSD pay ongoing borrow interest, which accrues to the DAO</li>
+<li><strong>LlamaLend Interest:</strong> Borrowers pay interest plus LLAMMA swap fees; admin fees go to the DAO</li>
+</ul>
+<h3 id="weekly-distribution-cycle">Weekly Distribution Cycle<a class="headerlink" href="#weekly-distribution-cycle" title="Permanent link">&para;</a></h3>
+<p>All admin fees are collected weekly, converted to crvUSD (changed from 3CRV in June 2024), then distributed to all veCRV holders proportionally:</p>
+<ol>
+<li><strong>Monday:</strong> Fees collected from pools and crvUSD markets; conditional sell orders created</li>
+<li><strong>Tuesday:</strong> CoWSwap searchers execute swaps, converting everything into crvUSD</li>
+<li><strong>Wednesday:</strong> Converted crvUSD forwarded to the Fee Distributor contract on Ethereum mainnet</li>
+<li><strong>Thursday (after 00:00 UTC):</strong> Fees become claimable by veCRV holders</li>
+</ol>
+<h3 id="understanding-defillama-metrics">Understanding DefiLlama Metrics<a class="headerlink" href="#understanding-defillama-metrics" title="Permanent link">&para;</a></h3>
+<p>This is a common source of confusion. "Incentives" on DefiLlama refers to CRV token emissions — newly minted CRV distributed to LPs as rewards. These are <strong>not</strong> cash flows from trading activity. They are inflationary token rewards.</p>
+<table>
+<thead>
+<tr>
+<th>DefiLlama Term</th>
+<th>What It Actually Means</th>
+<th>Who Gets It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fees</td>
+<td>Total swap fees charged to traders</td>
+<td>50% to LPs, 50% to DAO</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>Admin fee share (50% of fees)</td>
+<td>veCRV holders (weekly distribution)</td>
+</tr>
+<tr>
+<td>Holders Revenue</td>
+<td>Same as Revenue</td>
+<td>veCRV holders</td>
+</tr>
+<tr>
+<td>Incentives</td>
+<td>CRV emissions (newly minted tokens)</td>
+<td>Liquidity providers (inflationary)</td>
+</tr>
+<tr>
+<td>Earnings</td>
+<td>Revenue minus Incentives</td>
+<td>Net protocol economics</td>
+</tr>
+</tbody>
+</table>
+<p>Because CRV emissions have historically exceeded actual fee revenue, Curve's "Earnings" on DefiLlama are often negative — the protocol pays out more in token rewards than it earns in fees.</p>
+<h3 id="how-vecrv-works">How veCRV Works<a class="headerlink" href="#how-vecrv-works" title="Permanent link">&para;</a></h3>
+<p>CRV itself earns nothing. To participate in fee distribution, you must lock CRV tokens into the Voting Escrow contract for 1 week to 4 years:</p>
+<table>
+<thead>
+<tr>
+<th>Lock Duration</th>
+<th>veCRV Received per CRV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 years</td>
+<td>1.00 veCRV</td>
+</tr>
+<tr>
+<td>1 year</td>
+<td>0.25 veCRV</td>
+</tr>
+</tbody>
+</table>
+<p>veCRV balance decays linearly to zero at lock expiry. Locks are irreversible — you cannot withdraw CRV before expiry.</p>
+<p>veCRV gives you three things: (1) pro-rata share of weekly trading fees, (2) up to 2.5x boosted CRV emissions if you also provide liquidity, and (3) governance voting power including gauge weight votes that direct CRV emissions.</p>
+<hr />
+<h2 id="crv-tokenomics">CRV Tokenomics<a class="headerlink" href="#crv-tokenomics" title="Permanent link">&para;</a></h2>
+<h3 id="supply-structure-march-2026">Supply Structure (March 2026)<a class="headerlink" href="#supply-structure-march-2026" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Max Supply</td>
+<td>3,030,303,031 CRV (hard cap)</td>
+</tr>
+<tr>
+<td>Circulating Supply</td>
+<td>~1.48B CRV (~49% of max)</td>
+</tr>
+<tr>
+<td>Current Price</td>
+<td>~$0.21 – $0.42 (high volatility)</td>
+</tr>
+<tr>
+<td>Market Cap</td>
+<td>~$310M – $600M</td>
+</tr>
+<tr>
+<td>FDV</td>
+<td>~$500M – $1.26B</td>
+</tr>
+<tr>
+<td>All-Time High</td>
+<td>$60.50 (Aug 2020, briefly)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="allocation">Allocation<a class="headerlink" href="#allocation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Community Emissions (liquidity mining): 56.86% — distributed to LPs over ~300 years</li>
+<li>Core Team: 26.52% — fully vested as of August 2024</li>
+<li>Pre-CRV Liquidity Providers: 5.02%</li>
+<li>Community Reserve: 5.02%</li>
+<li>Investors: 3.58%</li>
+<li>Employees: 3.01%</li>
+</ul>
+<h3 id="emission-schedule">Emission Schedule<a class="headerlink" href="#emission-schedule" title="Permanent link">&para;</a></h3>
+<p>CRV follows a piecewise linear inflation schedule that reduces by approximately 15.9% each year (by a factor of 2^(1/4)). Community emissions started at ~274M tokens/year in 2020 and have been declining since.</p>
+<p><strong>Critical structural shift:</strong> The inflation rate dropped from ~20% to ~6% in 2024 when all core team tokens finished vesting. Going forward, inflation continues declining ~16% annually. This was a major tailwind for supply dynamics.</p>
+<h3 id="gauge-voting-the-bribe-economy">Gauge Voting &amp; The Bribe Economy<a class="headerlink" href="#gauge-voting-the-bribe-economy" title="Permanent link">&para;</a></h3>
+<p>veCRV holders vote weekly on "gauge weights" — deciding what percentage of CRV emissions each pool receives. This created an entire meta-economy where protocols bribe veCRV holders (via Votium and Warden Quest) to direct emissions toward their pools. If a protocol needs deep stablecoin liquidity, they either buy CRV and lock it, or pay bribes to existing veCRV holders.</p>
+<hr />
+<h2 id="ecosystem-the-curve-wars">Ecosystem &amp; The Curve Wars<a class="headerlink" href="#ecosystem-the-curve-wars" title="Permanent link">&para;</a></h2>
+<p>Curve functions as infrastructure that other protocols build on top of. This is both its moat and its vulnerability.</p>
+<h3 id="convex-finance">Convex Finance<a class="headerlink" href="#convex-finance" title="Permanent link">&para;</a></h3>
+<p>Convex controls over 53% of all veCRV as of late 2025, making it the single most powerful governance entity in the ecosystem. Convex abstracts away veCRV complexity: LPs deposit Curve LP tokens to receive maximum-boosted CRV rewards without locking CRV themselves, while CRV holders stake for cvxCRV (a liquid derivative) and enhanced yields. Convex's vlCVX holders ultimately direct Convex's massive veCRV voting power — meaning protocols bribe vlCVX holders rather than veCRV holders directly.</p>
+<h3 id="other-key-integrations">Other Key Integrations<a class="headerlink" href="#other-key-integrations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Yearn Finance</strong> — vaults that auto-compound Curve LP positions; manages a large veCRV position</li>
+<li><strong>StakeDAO</strong> — liquid locker/yield optimizer, similar model to Convex but smaller</li>
+<li><strong>Resupply</strong> — built on LlamaLend; lets users supply crvUSD and mint reUSD for additional capital efficiency</li>
+<li><strong>Spectra Finance</strong> — built on Curve pools; splits yield-bearing tokens into principal and yield components</li>
+<li><strong>YieldBasis</strong> — supplies crvUSD to Curve in exchange for governance tokens</li>
+<li><strong>DEX Aggregators (1inch, Paraswap, CoW Swap)</strong> — route significant stablecoin volume through Curve due to best-execution pricing</li>
+</ul>
+<p><strong>The pattern:</strong> Curve's token economics are partially captured by intermediaries like Convex rather than going directly to individual CRV holders. The deeper the integrations, the harder to unwind — but also the harder to recapture value at the CRV level.</p>
+<hr />
+<h2 id="stablecoin-proliferation-thesis">Stablecoin Proliferation Thesis<a class="headerlink" href="#stablecoin-proliferation-thesis" title="Permanent link">&para;</a></h2>
+<h3 id="the-market-today">The Market Today<a class="headerlink" href="#the-market-today" title="Permanent link">&para;</a></h3>
+<p>Total stablecoin market cap exceeded $310B as of early 2026. USDT dominates at ~60% share ($186B+), USDC holds ~24% ($74–76B), and the long tail is growing fast. DeFi accounts for an estimated 48% of all stablecoin activity.</p>
+<h3 id="institutional-entrants">Institutional Entrants<a class="headerlink" href="#institutional-entrants" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>JPMorgan</strong> — JPM Coin (JPMD) expanding onto Canton Network for institutional settlement (permissioned rails)</li>
+<li><strong>PayPal</strong> — PYUSD integrated into Visa settlement, YouTube creator payments, expanded to Solana/Stellar</li>
+<li><strong>Fiserv</strong> — Launched FIUSD; stablecoin platform for thousands of client banks</li>
+<li><strong>Societe Generale</strong> — EUR CoinVertible (EURCV) and USD CoinVertible (USDCV), first major bank stablecoins on public blockchain</li>
+<li><strong>Wyoming</strong> — State-issued FRNT stable token, available on Kraken across 7 blockchains</li>
+<li><strong>Stripe/Bridge</strong> — Won bidding war to issue USDH stablecoin on Hyperliquid's DeFi platform</li>
+<li><strong>Coinbase</strong> — White-label stablecoin issuance for corporations and banks</li>
+</ul>
+<p><strong>The honest question:</strong> Do these new stablecoins actually need Curve? JPM Coin operates on permissioned infrastructure. PYUSD routes through PayPal's own rails. Many institutional stablecoins may never touch public DeFi. The bull case requires these coins to need on-chain liquidity pairings — and for that liquidity to route through Curve specifically, not Uniswap v4 or Balancer.</p>
+<hr />
+<h2 id="regulatory-landscape">Regulatory Landscape<a class="headerlink" href="#regulatory-landscape" title="Permanent link">&para;</a></h2>
+<h3 id="genius-act-signed-into-law-mid-2025">GENIUS Act (Signed into Law, Mid-2025)<a class="headerlink" href="#genius-act-signed-into-law-mid-2025" title="Permanent link">&para;</a></h3>
+<p>The Guiding and Establishing National Innovation for U.S. Stablecoins Act was the first federal U.S. stablecoin law. Established reserve requirements, issuer oversight, and consumer protections for payment stablecoins. Passed Senate 68–30 and House 308–122 with bipartisan support. This gave institutional players the regulatory clarity to begin launching stablecoins.</p>
+<h3 id="clarity-act-pending-senate-as-of-march-2026">CLARITY Act (Pending Senate, as of March 2026)<a class="headerlink" href="#clarity-act-pending-senate-as-of-march-2026" title="Permanent link">&para;</a></h3>
+<p>The Digital Asset Market Clarity Act is the broader crypto market structure bill. Passed the House 294–134 in July 2025 but has stalled in the Senate. Key provisions:</p>
+<p><strong>DeFi Exclusion (Section 309):</strong> Excludes decentralized finance activities — positive for protocols like Curve that operate without centralized intermediaries.</p>
+<p><strong>Stablecoin Yield Ban:</strong> A March 2026 compromise between Senators Tillis and Alsobrooks would ban passive yield on stablecoin balances (earning interest just for holding) but allow activity-based rewards tied to transactions or platform use. Significant implications for DeFi demand for stablecoins.</p>
+<p><strong>Current Status:</strong> Senate Banking Committee markup targeted for second half of April 2026. Senator Moreno has warned that if the bill doesn't reach the Senate floor by May, it risks being shelved until after midterms. The White House crypto czar position (previously David Sacks) became vacant March 26, adding uncertainty. Still needs: committee markup, Senate floor vote (60 votes), reconciliation with House version, and presidential signature.</p>
+<hr />
+<h2 id="competitive-landscape">Competitive Landscape<a class="headerlink" href="#competitive-landscape" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Strength vs Curve</th>
+<th>Weakness vs Curve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Uniswap V3/V4</strong></td>
+<td>Concentrated liquidity can match Curve on stable pairs; massive brand and volume (~$1.7B/day); hooks in V4 enable custom AMM logic</td>
+<td>Generalist design, less optimized for stable swaps; higher slippage on very large stablecoin trades</td>
+</tr>
+<tr>
+<td><strong>Balancer V2/V3</strong></td>
+<td>Flexible pool types; composable with Aura (their Convex equivalent)</td>
+<td>Smaller TVL; less ecosystem depth; slower L2 deployment</td>
+</tr>
+<tr>
+<td><strong>Maverick Protocol</strong></td>
+<td>Novel directional liquidity bins; gaining traction on stablecoin pairs</td>
+<td>Much smaller; unproven at scale; limited integrations</td>
+</tr>
+<tr>
+<td><strong>Velodrome / Aerodrome</strong></td>
+<td>Dominant on Optimism/Base; simpler ve-model; built-in bribe marketplace</td>
+<td>Chain-specific (not Ethereum mainnet); different design philosophy</td>
+</tr>
+<tr>
+<td><strong>PancakeSwap</strong></td>
+<td>Dominant on BNB Chain; ~$1.7B daily volume</td>
+<td>Less specialized in stablecoins; different target market</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The real competitive threat:</strong> Uniswap V4's hook system theoretically allows anyone to recreate StableSwap-like curves within Uniswap's infrastructure. If this becomes widely adopted, Curve's algorithmic moat erodes. Curve's remaining defenses would be existing liquidity depth, integrations, and the veCRV governance economy.</p>
+<hr />
+<h2 id="investment-thesis">Investment Thesis<a class="headerlink" href="#investment-thesis" title="Permanent link">&para;</a></h2>
+<h3 id="bull-case">Bull Case<a class="headerlink" href="#bull-case" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Stablecoin supercycle.</strong> Market at $310B+ and growing. Estimates of $46T in annualized stablecoin transaction volume. As dozens of new stablecoins launch, they all need to trade against each other. Curve is the most capital-efficient venue for this.</li>
+<li><strong>Emission cliff passed.</strong> The biggest source of sell pressure (team/investor vesting + high community emissions) is behind us. Inflation dropped from ~20% to ~6% in 2024 and continues declining.</li>
+<li><strong>crvUSD and LlamaLend diversify revenue.</strong> No longer just a DEX. Lending interest and stablecoin fees create new revenue streams that accrue to veCRV. LlamaLend V2 opens up mainstream lending pairs.</li>
+<li><strong>Deep integrations create switching costs.</strong> Convex, Yearn, StakeDAO, Spectra, Resupply, YieldBasis — an entire ecosystem is built on top of Curve. Network effects are hard to replicate.</li>
+<li><strong>Regulatory tailwinds.</strong> GENIUS Act legitimized stablecoins. CLARITY Act DeFi exclusion (if passed) would provide legal clarity for protocols like Curve.</li>
+<li><strong>User growth reaccelerating.</strong> DAU hit all-time highs in early 2026 (4.9K, up from sub-1K in 2023). Pool interactions more than doubled YoY.</li>
+<li><strong>Extreme undervaluation if thesis plays out.</strong> CRV is down &gt;99% from ATH. Market cap ~$300–600M for a protocol that processed $126B in volume last year.</li>
+</ol>
+<h3 id="bear-case">Bear Case<a class="headerlink" href="#bear-case" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>The math doesn't work yet.</strong> In 2025, Curve generated ~$27M in total fees, of which $13.6M was distributed to veCRV holders. Meanwhile, CRV emissions run at ~$45M annually — the protocol pays out roughly 3x more in token rewards than it earns in real fees. Implied veCRV yield is low single digits at best, before accounting for the opportunity cost of a 4-year illiquid lock.</li>
+<li><strong>Institutional stablecoins may not use Curve.</strong> JPM Coin runs on permissioned Canton Network. Many institutional stablecoin flows will settle through OTC desks, card networks, or proprietary rails — not permissionless DeFi AMMs.</li>
+<li><strong>Uniswap V4 hooks erode the algorithmic moat.</strong> Anyone can now build StableSwap-equivalent curves inside Uniswap's infrastructure, with Uniswap's existing liquidity and user base.</li>
+<li><strong>Governance centralization via Convex.</strong> 53%+ of veCRV controlled by Convex means governance is effectively captured by one protocol. Small CRV holders have limited influence.</li>
+<li><strong>The Egorov crisis showed systemic fragility.</strong> In 2023, founder Michael Egorov's massive CRV borrowing positions nearly cascaded into forced liquidations. Resolved, but exposed single-point-of-failure risk around the founder.</li>
+<li><strong>CLARITY Act stablecoin yield ban could reduce DeFi demand.</strong> If passive stablecoin yield is banned and DeFi faces regulatory overhang, stablecoin activity could consolidate into regulated CeFi rails. Circle dropped 20% on the draft text.</li>
+<li><strong>Smart contract risk is not hypothetical.</strong> Curve suffered a ~$70M exploit in July 2023 (Vyper compiler bug) and a $240K LlamaLend exploit in March 2026. The protocol continues expanding its attack surface with crvUSD and LlamaLend.</li>
+<li><strong>TVL still down &gt;90% from peak.</strong> From $24B+ in 2022 to ~$2B now. Protocol treasury holds just $1.6M — minimal runway.</li>
+</ol>
+<hr />
+<h2 id="valuation">Valuation<a class="headerlink" href="#valuation" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Approximate Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025 Total Protocol Fees</td>
+<td>~$27M (all sources combined)</td>
+</tr>
+<tr>
+<td>Revenue to veCRV (2025 actual)</td>
+<td>$13.6M</td>
+</tr>
+<tr>
+<td>Market Cap</td>
+<td>~$310M – $600M</td>
+</tr>
+<tr>
+<td>FDV</td>
+<td>~$500M – $1.26B</td>
+</tr>
+<tr>
+<td>P/Fees (Market Cap / Fees)</td>
+<td>~11x – 22x</td>
+</tr>
+<tr>
+<td>P/Revenue (Market Cap / veCRV Revenue)</td>
+<td>~22x – 44x</td>
+</tr>
+<tr>
+<td>Implied veCRV Yield</td>
+<td>Low single digits at best</td>
+</tr>
+</tbody>
+</table>
+<p>At $27M in annual fees and $13.6M distributed to veCRV holders, the current fee run-rate does not justify the market cap on a pure cash-flow basis. <strong>For CRV to work as an investment, fees need to grow at least 3–5x from current levels.</strong> Note: DefiLlama's current annualized revenue (~$7M) reflects a recent lower run-rate, suggesting fees have decelerated from mid-2025 levels.</p>
+<p>For context: Aave generates ~$55M in annualized fees at $28B TVL. Curve's fee capture is structurally lower because of its ultra-low fee design (0.01–0.04%), meaning it needs proportionally much higher volume to generate equivalent revenue.</p>
+<hr />
+<h2 id="bottom-line">Bottom Line<a class="headerlink" href="#bottom-line" title="Permanent link">&para;</a></h2>
+<p>Curve Finance is genuine infrastructure — it solves a real problem with a technically superior algorithm, and an entire ecosystem has been built on top of it. The stablecoin proliferation thesis is real: the market has tripled in two years and institutional entrants are accelerating.</p>
+<p>The question is not whether stablecoins will grow. It's whether that growth flows through Curve specifically, whether Curve can capture enough value in fees relative to CRV inflation, and whether competitors (particularly Uniswap V4) erode its positioning before the thesis plays out.</p>
+<p><strong>As an investment in CRV/veCRV, you are betting on:</strong> (1) stablecoin volume growing 5–10x+, (2) Curve maintaining its share of on-chain stablecoin routing, (3) new revenue from crvUSD and LlamaLend materializing, (4) regulatory clarity favoring DeFi over bank-only rails, and (5) the emission overhang not overwhelming fee growth. If all five hit, CRV at $0.20–$0.40 is arguably cheap. If two or three miss, there's limited downside protection because the yield from fees alone doesn't justify the capital commitment of a 4-year lock.</p>
+<hr />
+<p><em>Research compiled March–April 2026. Data sourced from DefiLlama, Curve official documentation, CoinGecko, CoinMarketCap, public reporting, and legislative records. Not financial advice.</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Mike Connolly
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/connolmj" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
