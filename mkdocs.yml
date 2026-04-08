@@ -59,11 +59,7 @@ extra:
 
 nav:
   - Home: index.md
-  - Crypto & DeFi:
-    - crypto-defi/index.md
-    - Curve Finance: crypto-defi/curve-finance.md
-  - Tech Research:
-    - tech-research/index.md
-    - Understanding LLMs: tech-research/llm-explainer.md
+  - Understanding LLMs: tech-research/llm-explainer.md
+  - Curve Finance: crypto-defi/curve-finance.md
 
 copyright: Copyright &copy; 2026 Mike Connolly
