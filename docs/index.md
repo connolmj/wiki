@@ -6,6 +6,7 @@ Personal notes and deep dives on topics I'm actively researching. Published from
 
 | Article | Topic | Date |
 |---|---|---|
+| [Understanding Large Language Models](tech-research/llm-explainer.md) | AI / Machine Learning | Apr 2026 |
 | [Curve Finance](crypto-defi/curve-finance.md) | DeFi / AMMs | Apr 2026 |
 
 ---
